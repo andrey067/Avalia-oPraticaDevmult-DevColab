@@ -23,27 +23,28 @@ namespace TesteBhaskara
             //Assert
             Assert.Equal(resultado, valorEsperado);
         }
-        [Fact]
-        public void VerificarPrimo()
+
+        [Theory]
+        [InlineData("Audrey", 27, "Não é primo")]
+        //[InlineData("Leandro", -10, 8, 16)]
+        //[InlineData("Rafael", -5, 6, 3)]
+        //[InlineData("Diego", -5, 10, -1)]
+        public void VerificarPrimo(string nome, int idade, string resultadoEsperado)
         {
             //Arrange
-            Pessoa pessoa = new Pessoa();
-            pessoa.Nome = "Audrey";
-            pessoa.Idade = 27;
-            pessoa.resultado = "Não é primo";
+            Pessoa pessoa = new Pessoa(nome, idade);
 
             Mock<IPessoa> mock = new Mock<IPessoa>();
-            mock.Setup(m => m.VerificarPrimo(pessoa)).Returns("Não é primo");
+            mock.Setup(m => m.VerificarPrimo(pessoa)).Returns(resultadoEsperado);
 
-            Pessoa verificar = new Pessoa();
+            Pessoa verificar = new();
 
             //Act
-            var resultadoEsperado = mock.Object.VerificarPrimo(pessoa);
+            var v = mock.Object.VerificarPrimo(pessoa);
             var resultado = verificar.VerificarPrimo(pessoa);
 
             //Assert
             Assert.Equal(resultado, resultadoEsperado);
-
         }
     }
 }
