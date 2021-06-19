@@ -26,9 +26,9 @@ namespace TesteBhaskara
 
         [Theory]
         [InlineData("Audrey", 27, "Não é primo")]
-        //[InlineData("Leandro", -10, 8, 16)]
-        //[InlineData("Rafael", -5, 6, 3)]
-        //[InlineData("Diego", -5, 10, -1)]
+        [InlineData("Leandro", 24, "É primo")]
+        [InlineData("Rafael", 20, "É primo")]
+        [InlineData("Diego", 35, "Não é primo")]
         public void VerificarPrimo(string nome, int idade, string resultadoEsperado)
         {
             //Arrange
